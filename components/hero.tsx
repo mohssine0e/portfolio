@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Shield, Code2 } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { FacePlaceholder } from './face-placeholder'
 
 export function Hero() {
   const [displayedText, setDisplayedText] = useState('')
@@ -32,7 +33,7 @@ export function Hero() {
   ]
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Terminal background glow */}
       <div className="absolute inset-0 -z-10">
         <motion.div
@@ -51,8 +52,15 @@ export function Hero() {
         />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-20 w-full">
-        {/* Boot sequence */}
+      <div className="max-w-6xl mx-auto px-6 py-20 w-full grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        {/* Face Avatar - Hero Large Version */}
+        <div className="hidden lg:flex justify-center">
+          <FacePlaceholder size="hero" />
+        </div>
+
+        {/* Content Section */}
+        <div className="lg:col-span-2">
+          {/* Boot sequence */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -96,7 +104,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 1.3 }}
           className="mb-12"
         >
-          <p className="text-lg text-foreground/70 max-w-2xl leading-relaxed font-light">
+          <p className="text-lg text-foreground/85 max-w-2xl leading-relaxed font-light">
             Crafting secure, scalable systems with Java & Spring Boot. Passionate about 
             <span className="text-[#10b981] font-semibold"> open source</span>,{' '}
             <span className="text-[#f97316] font-semibold">security</span>, and{' '}
@@ -170,28 +178,29 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Terminal scroll prompt */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.8 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
+          {/* Terminal scroll prompt */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 0.8 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
           >
-            <p className="text-xs font-mono text-foreground/40">scroll down</p>
-            <div className="w-5 h-8 border border-foreground/40 rounded-full flex items-center justify-center">
-              <motion.div
-                animate={{ y: [2, 6, 2] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-1 bg-foreground/40 rounded-full"
-              />
-            </div>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="flex flex-col items-center gap-2"
+            >
+              <p className="text-xs font-mono text-foreground/40">scroll down</p>
+              <div className="w-5 h-8 border border-foreground/40 rounded-full flex items-center justify-center">
+                <motion.div
+                  animate={{ y: [2, 6, 2] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-1 h-1 bg-foreground/40 rounded-full"
+                />
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

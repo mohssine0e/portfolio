@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { AnimatedSection } from './animated-section'
 import { CheckCircle2, Lock, Zap } from 'lucide-react'
+import { CommandLoader } from './command-loader'
 
 const skillCategories = [
   {
@@ -65,33 +66,23 @@ export function Skills() {
       className="py-20 bg-background border-t border-border relative"
     >
       <div className="max-w-6xl mx-auto px-6">
-        {/* Terminal header */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-4 font-mono text-xs text-foreground/50"
-        >
-          $ sys_modules --status --verbose
-        </motion.div>
+        <CommandLoader command="$ sys_modules --list">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-3">
+              System Modules
+            </h2>
+            <p className="text-lg text-foreground/85 max-w-3xl">
+              Loaded dependencies and critical systems powering my backend infrastructure.
+            </p>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            System Modules
-          </h2>
-          <p className="text-lg text-foreground/70 max-w-3xl">
-            Loaded dependencies and critical systems powering my backend infrastructure.
-          </p>
-        </motion.div>
-
-        <motion.div
+          <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -140,35 +131,25 @@ export function Skills() {
                     ))}
                   </div>
 
-                  {/* Bottom info */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: idx * 0.05 + 0.2 }}
-                    viewport={{ once: true }}
-                    className="mt-4 pt-4 border-t border-foreground/10 font-mono text-xs text-foreground/40"
-                  >
-                    Active: {category.skills.length} dependencies
-                  </motion.div>
                 </div>
               </motion.div>
             )
           })}
-        </motion.div>
+          </motion.div>
 
-        {/* System status footer */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-16 p-6 rounded-lg border border-[#10b981]/30 bg-[#10b981]/5"
-        >
-          <p className="font-mono text-sm text-[#10b981] leading-relaxed">
-            <span className="text-[#10b981]/60">&gt;</span> All systems operational. Java + Spring Boot expertise certified. 
-            <span className="text-[#10b981]/60"> Continuous learning enabled.</span>
-          </p>
-        </motion.div>
+          {/* System status footer */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-12 p-5 rounded-md border border-[#10b981]/30 bg-[#10b981]/5"
+          >
+            <p className="font-mono text-sm text-[#10b981]">
+              <span className="text-[#10b981]/60">&gt;</span> All systems operational.
+            </p>
+          </motion.div>
+        </CommandLoader>
       </div>
     </AnimatedSection>
   )

@@ -61,7 +61,7 @@ export function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Let&apos;s Connect
           </h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-foreground/85 max-w-2xl mx-auto leading-relaxed">
             Whether you have an interesting project, want to discuss backend
             architecture, or just want to say hello, feel free to reach out. I&apos;m
             always open to new opportunities and conversations.

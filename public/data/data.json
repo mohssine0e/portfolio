@@ -1,0 +1,160 @@
+{
+  "personal": {
+    "name": "Mohssine Echlaihi",
+    "title": "Software Engineering Student | Java Backend Developer",
+    "email": "mohssineechlahi85@gmail.com",
+    "phone": "+212 613 757 244",
+    "location": "Fkih Ben Salah, Morocco",
+    "description": "Fourth-year Computer Engineering student at ENSA Al Hoceima (ENSAH), focused on Java backend development and distributed systems. Hands-on experience designing Spring Boot microservices, REST APIs, and full-stack applications. Fast learner, strong problem-solver, and active open-source / Linux user. Seeking a PFA internship (2-3 months) to contribute to real-world backend or full-stack projects.",
+    "headline": "Building scalable backend systems & distributed architectures"
+  },
+  "socials": {
+    "github": "https://github.com/mohssine0e",
+    "linkedin": "https://linkedin.com/in/mohssineechalahi",
+    "email": "mailto:mohssineechlahi85@gmail.com",
+    "phone": "tel:+212613757244"
+  },
+  "technical_skills": {
+    "programming": ["Java", "Python", "C", "C++"],
+    "backend": ["Java", "Spring Boot", "Spring Data JPA", "Spring Security", "Spring Cloud Gateway", "Hibernate", "RESTful APIs", "WebClient"],
+    "frontend": ["React.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
+    "databases": ["MySQL", "PostgreSQL", "MongoDB", "Oracle Database", "PL/SQL"],
+    "devops_tools": ["Git", "GitHub", "GitLab CI/CD", "Docker", "Maven", "Linux (Arch)", "Swagger/OpenAPI"],
+    "concepts": [
+      "Object-Oriented Programming (OOP)",
+      "MVC Architecture",
+      "Microservices Architecture",
+      "Distributed Systems",
+      "Data Structures & Algorithms",
+      "REST API Design",
+      "OWASP Security Basics"
+    ],
+    "other": ["PHP", "Laravel", "Blade Templating Engine"]
+  },
+  "experience": [
+    {
+      "id": 1,
+      "company": "ShiftBricks",
+      "position": "Web Development Intern",
+      "duration": "2024 (2 months)",
+      "location": "Morocco",
+      "technologies": ["Laravel", "PostgreSQL", "Docker", "GitLab"],
+      "responsibilities": [
+        "Designed and built a complete license management platform end-to-end: requirements analysis, system design, implementation, and deployment",
+        "Developed backend with Laravel (MVC), implemented authentication and core business logic",
+        "Built frontend with Blade, HTML, and CSS",
+        "Designed and optimized the PostgreSQL schema",
+        "Containerized the app with Docker and managed releases via GitLab"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Student Enrollment System - Microservices Architecture",
+      "description": "A distributed system for managing students, courses, and enrollments using microservices architecture",
+      "technologies": ["Spring Boot", "Spring Cloud Gateway", "React", "Docker", "WebClient", "MySQL", "Swagger/OpenAPI"],
+      "features": [
+        "Independent Spring Boot services (Student, Course, Enrollment) communicating via WebClient behind an API Gateway",
+        "Database-per-service design (MySQL) for loose coupling and scalability",
+        "React dashboard for enrollment workflows",
+        "Business rules implementation including capacity limits and cancellation policies",
+        "All endpoints documented with Swagger/OpenAPI"
+      ],
+      "github": "https://github.com/mohssine0e/student-enrollment-system",
+      "live_demo": null
+    },
+    {
+      "id": 2,
+      "name": "University Academic Management Platform",
+      "description": "Multi-role academic platform with granular role-based access control",
+      "technologies": ["Laravel", "MySQL", "Bootstrap", "Eloquent ORM"],
+      "features": [
+        "Multi-role system (admin, professor, coordinator, department head) with granular role-based access control",
+        "Custom Laravel middleware for route protection and role/permission verification",
+        "Normalized relational schema (MySQL) with Eloquent ORM relationships (one-to-many, many-to-many)",
+        "Core modules for courses, scheduling, and grade management",
+        "Responsive Blade/Bootstrap UI",
+        "Laravel's validation layer and form requests for data integrity across all CRUD operations"
+      ],
+      "github": "https://github.com/mohssine0e/university-management",
+      "live_demo": null
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "degree": "Engineering Cycle, Computer Science",
+      "institution": "ENSA Al Hoceima (ENSAH)",
+      "period": "2022 - Present",
+      "coursework": ["Spring Boot", "Microservices", "Advanced JavaScript", "Application Security"]
+    },
+    {
+      "id": 2,
+      "degree": "Preparatory Cycle for Engineering Studies",
+      "institution": "ENSA Al Hoceima (ENSAH)",
+      "period": "2022 - 2024"
+    },
+    {
+      "id": 3,
+      "degree": "Baccalaureate in Physics",
+      "institution": "Lycée Bir Anzaran, Fkih Ben Salah",
+      "period": "2021 - 2022",
+      "honors": "Mention Très Bien"
+    }
+  ],
+  "certifications": [
+    {
+      "id": 1,
+      "name": "Oracle Cloud Infrastructure 2025 AI Foundations Associate",
+      "issuer": "Oracle",
+      "type": "Oracle Certified Associate",
+      "year": "2025"
+    },
+    {
+      "id": 2,
+      "name": "Java SE 17",
+      "issuer": "Oracle",
+      "type": "Oracle Certified Associate",
+      "year": "In Progress",
+      "status": "in-progress"
+    }
+  ],
+  "leadership": {
+    "roles": [
+      {
+        "title": "Chess Club President",
+        "organization": "ENSA Al Hoceima",
+        "responsibilities": [
+          "Organized tournaments",
+          "Coordinated activities",
+          "Led member engagement"
+        ]
+      }
+    ]
+  },
+  "languages": [
+    {
+      "language": "Arabic",
+      "proficiency": "Native"
+    },
+    {
+      "language": "French",
+      "proficiency": "B2"
+    },
+    {
+      "language": "English",
+      "proficiency": "B2"
+    }
+  ],
+  "interests": [
+    "Backend Engineering",
+    "Distributed Systems",
+    "Open Source",
+    "Chess"
+  ],
+  "meta": {
+    "last_updated": "2026-06-28",
+    "version": "1.0"
+  }
+}

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { AnimatedSection } from './animated-section'
 import { Terminal } from 'lucide-react'
+import { CommandLoader } from './command-loader'
 
 export function About() {
   const highlights = [
@@ -43,19 +44,8 @@ export function About() {
   return (
     <AnimatedSection id="about" className="py-20 bg-background border-t border-border">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Terminal header */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-4 font-mono text-xs text-foreground/50 flex items-center gap-2"
-        >
-          <Terminal className="w-4 h-4" />
-          $ whoami && uname -a
-        </motion.div>
-
-        {/* System Info */}
+        <CommandLoader command="$ whoami && uname -a">
+          {/* System Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +79,7 @@ export function About() {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             About This System
           </h2>
-          <p className="text-lg text-foreground/70 leading-relaxed">
+          <p className="text-lg text-foreground/85 leading-relaxed">
             I&apos;m a backend engineer with deep passion for architecting systems that scale. Currently 
             pursuing my engineering degree while interning at <span className="text-[#10b981]">ShiftBricks</span>,
             where I&apos;m applying theoretical knowledge to real-world challenges. I specialize in
@@ -131,31 +121,32 @@ export function About() {
           ))}
         </div>
 
-        {/* Philosophy - Terminal Style */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="p-6 rounded-md border border-[#06b6d4]/30 bg-[#06b6d4]/5"
-        >
-          <div className="font-mono text-xs text-[#06b6d4] mb-3">$ cat philosophy.md</div>
-          <h3 className="text-2xl font-semibold text-foreground mb-4">Engineering Principles</h3>
-          <div className="text-foreground/80 leading-relaxed space-y-3 text-sm">
-            <p>
-              <span className="text-[#06b6d4]">&gt;</span> Code is read more than it is written. 
-              Every line should be clear, maintainable, and testable.
-            </p>
-            <p>
-              <span className="text-[#06b6d4]">&gt;</span> Systems must scale gracefully. 
-              Architecture decisions compound over time.
-            </p>
-            <p>
-              <span className="text-[#06b6d4]">&gt;</span> Security first. Open source contributions. 
-              Linux philosophy: Do one thing, do it well.
-            </p>
-          </div>
-        </motion.div>
+          {/* Philosophy - Terminal Style */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="p-6 rounded-md border border-[#06b6d4]/30 bg-[#06b6d4]/5"
+          >
+            <div className="font-mono text-xs text-[#06b6d4] mb-3">$ cat philosophy.md</div>
+            <h3 className="text-2xl font-semibold text-foreground mb-4">Engineering Principles</h3>
+            <div className="text-foreground/80 leading-relaxed space-y-3 text-sm">
+              <p>
+                <span className="text-[#06b6d4]">&gt;</span> Code is read more than it is written. 
+                Every line should be clear, maintainable, and testable.
+              </p>
+              <p>
+                <span className="text-[#06b6d4]">&gt;</span> Systems must scale gracefully. 
+                Architecture decisions compound over time.
+              </p>
+              <p>
+                <span className="text-[#06b6d4]">&gt;</span> Security first. Open source contributions. 
+                Linux philosophy: Do one thing, do it well.
+              </p>
+            </div>
+          </motion.div>
+        </CommandLoader>
       </div>
     </AnimatedSection>
   )

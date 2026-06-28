@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { AnimatedSection } from './animated-section'
 import { Briefcase, GraduationCap } from 'lucide-react'
+import { CommandLoader } from './command-loader'
 
 const experiences = [
   {
@@ -56,23 +57,24 @@ export function Experience() {
       className="py-20 bg-background border-t border-border"
     >
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Experience & Education
-          </h2>
-          <p className="text-lg text-foreground/70 max-w-3xl">
-            A timeline of my professional growth and academic achievements.
-          </p>
-        </motion.div>
+        <CommandLoader command="$ cat career_history.log">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-3">
+              Experience & Education
+            </h2>
+            <p className="text-lg text-foreground/85 max-w-3xl">
+              A timeline of my professional growth and academic achievements.
+            </p>
+          </motion.div>
 
-        {/* Timeline */}
-        <div className="space-y-8">
+          {/* Timeline */}
+          <div className="space-y-8">
           {experiences.map((exp, index) => (
             <motion.div
               key={`${exp.title}-${exp.period}`}
@@ -139,7 +141,8 @@ export function Experience() {
               </div>
             </motion.div>
           ))}
-        </div>
+          </div>
+        </CommandLoader>
       </div>
     </AnimatedSection>
   )

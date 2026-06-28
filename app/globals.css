@@ -8,9 +8,9 @@
   --font-heading: var(--font-sans);
   --font-sans: var(--font-geist-sans), 'Geist Fallback';
   --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
-  --color-accent-blue: rgb(59, 130, 246);
-  --color-accent-blue-dark: rgb(37, 99, 235);
-  --color-accent-blue-light: rgb(96, 165, 250);
+  --color-primary-green: #10b981;
+  --color-primary-cyan: #06b6d4;
+  --color-primary-orange: #f97316;
   --color-accent-green: #10b981;
   --color-accent-orange: #f97316;
   --color-accent-cyan: #06b6d4;

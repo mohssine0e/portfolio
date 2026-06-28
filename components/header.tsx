@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { FacePlaceholder } from './face-placeholder'
 
 const navItems = [
   { label: 'About', href: '#about', process: 'whoami' },
@@ -48,15 +49,18 @@ export function Header() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-xl font-bold text-[#10b981] font-mono hover:text-[#10b981]/80 transition-colors cursor-default"
-        >
-          root@portfolio
-        </motion.div>
+      <nav className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <FacePlaceholder size="header" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg font-bold text-[#10b981] font-mono hover:text-[#10b981]/80 transition-colors cursor-default"
+          >
+            root@portfolio
+          </motion.div>
+        </div>
 
         <div className="hidden md:flex gap-1">
           {navItems.map((item, i) => {

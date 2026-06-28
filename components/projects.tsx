@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { AnimatedSection } from './animated-section'
 import { ExternalLink, Code, CheckCircle2 } from 'lucide-react'
+import { CommandLoader } from './command-loader'
 
 const projects = [
   {
@@ -74,33 +75,23 @@ export function Projects() {
       className="py-20 bg-background border-t border-border"
     >
       <div className="max-w-6xl mx-auto px-6">
-        {/* Terminal header */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-4 font-mono text-xs text-foreground/50"
-        >
-          $ cat deployment_logs.txt
-        </motion.div>
+        <CommandLoader command="$ cat deployment_logs.txt">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-3">
+              Deployment Logs
+            </h2>
+            <p className="text-lg text-foreground/85 max-w-3xl">
+              Production deployments and system architectures built to scale.
+            </p>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Deployment Logs
-          </h2>
-          <p className="text-lg text-foreground/70 max-w-3xl">
-            Production deployments and system architectures built to scale.
-          </p>
-        </motion.div>
-
-        <motion.div
+          <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -189,7 +180,8 @@ export function Projects() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        </CommandLoader>
       </div>
     </AnimatedSection>
   )
