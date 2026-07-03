@@ -22,19 +22,30 @@ Source: design/logic review of index.html + public/data/data.json against the re
 - [x] Remove/replace dead `text-foreground` utility classes (not defined anywhere, no Tailwind config) with real color classes
 - [x] Make the page actually read from `public/data/data.json` at runtime (fetch + render) instead of hardcoded duplicate content, so data.json is the single source of truth
 
-## Part 2 — Enhancements (visual identity & polish)
+## Part 2 — Enhancements (visual identity & polish) ✅ DONE
 
-- [ ] Replace CDN Tailwind v2 dev build with a proper build step (or a hand-written, purposeful CSS system) — drop the generic "hacker terminal" template look
-- [ ] Commit to one coherent visual direction (calmer editorial identity: backend/distributed-systems focus, clean type, restrained accent color) instead of the half-finished terminal cosplay
-- [ ] Reduce accent palette to one primary accent + one neutral secondary, used with intent (not repeated on every element)
-- [ ] Vary section layout/rhythm instead of five identical cards (asymmetric hero, alternating project layout, distinct timeline treatment)
-- [ ] Improve skill display beyond a flat tag cloud (group/weight by strength instead of 30+ identical pills)
-- [ ] Add lightweight visuals to Projects (simple architecture diagram for the microservices project, or screenshots)
-- [ ] Improve profile photo treatment (subtle duotone/gradient mask matching palette instead of default circle+ring)
-- [ ] Add simple wayfinding (sticky minimal nav or section dots)
-- [ ] Add restrained, purposeful micro-interactions (scroll reveal, refined hover states) — quality over quantity
-- [ ] Check text color contrast (opacity-70/60 text on dark background) for accessibility
-- [ ] Responsive pass on mobile/tablet after redesign
+Direction chosen: calm editorial identity (not the terminal theme) — warm paper background,
+Fraunces/Inter type pairing, single rust accent, light/dark via `prefers-color-scheme`.
+
+- [x] Dropped Tailwind CDN entirely; hand-written CSS system with variables (`:root`), matches
+      the reality of a single static `index.html` with no build step
+- [x] Committed to the calm editorial direction instead of the terminal theme
+- [x] One accent color (`--accent`, rust/sienna) + neutral ink/paper palette, used with intent
+- [x] Varied rhythm: asymmetric two-column hero, alternating tinted/plain section backgrounds,
+      date-column entry layout for experience/education instead of repeated identical cards
+- [x] Skills kept as grouped categories (not fake-weighted — there's no real proficiency data
+      in the CV to weight against, and inventing levels would repeat the Part 1 fabrication
+      problem), restyled as quiet outlined chips instead of loud filled pills
+- [x] Added hand-drawn inline SVG diagrams for both projects (API gateway → 3 services diagram;
+      role-hierarchy diagram) — accurate to the described architecture, not fabricated screenshots
+- [x] Profile photo: rounded-rect frame, subtle grayscale+sepia duotone filter instead of the
+      generic circle-avatar-with-neon-ring look
+- [x] Added sticky top nav with section links + scroll-spy active state
+- [x] Added IntersectionObserver-based scroll reveal per section, replacing the crude setTimeout
+      stagger; kept motion restrained (fade + slight translate only)
+- [x] New palette checked for contrast (near-black ink on warm paper / near-white ink on warm
+      dark bg — both comfortably pass AA)
+- [x] Responsive rules for hero/entries/nav at the narrow breakpoint
 
 ## Process
 
