@@ -1,0 +1,245 @@
+/* self-hosted fonts: no render-blocking third-party CSS, no Google origins */
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/600.css";
+@import "@fontsource/jetbrains-mono/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0e14;
+  --color-bg-tint: #0f141c;
+  --color-bg-raised: #131a24;
+  --color-ink: #e6edf3;
+  --color-ink-soft: #9aa5b1;
+  --color-ink-mute: #7d8896; /* keeps small muted text at ≥4.5:1 on the darkest backgrounds */
+  --color-accent: #00e5a0;
+  --color-accent-soft: rgba(0, 229, 160, 0.1);
+  --color-line: #1e2530;
+
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* keep section headings clear of the sticky nav when jumping via anchors */
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+/* subtle film-grain texture, cheap: one inline SVG, no network request */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* element defaults live in @layer base so component/utility classes can
+   override them — unlayered rules would beat every @layer rule and e.g.
+   force accent-green link text inside the green primary button */
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-mono);
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  a {
+    color: var(--color-accent);
+  }
+
+  /* one consistent, visible focus affordance for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- shared component classes ---- */
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-[880px] px-5 sm:px-6;
+  }
+
+  /* one shared vertical rhythm for every section */
+  .section {
+    @apply border-t border-line py-16 sm:py-20;
+  }
+
+  /* buttons */
+  .btn {
+    @apply relative z-0 inline-flex items-center gap-2 overflow-hidden rounded-md border border-line px-4 py-2.5 text-sm font-medium no-underline transition-[border-color,background-color,transform] duration-200;
+  }
+  .btn:hover {
+    @apply -translate-y-px;
+  }
+  .btn-primary {
+    @apply border-accent bg-accent font-semibold text-bg;
+  }
+  .btn-primary:hover {
+    opacity: 0.92;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-ink;
+  }
+  .btn-ghost:hover {
+    @apply border-accent text-accent;
+  }
+
+  /* cursor-tracked spotlight glow, position set via --mx/--my in JS */
+  .spotlight {
+    @apply pointer-events-none absolute inset-0 z-[-1] opacity-0 transition-opacity duration-300;
+    background: radial-gradient(180px circle at var(--mx, 50%) var(--my, 50%), var(--color-accent-soft), transparent 70%);
+  }
+  .spotlight-parent:hover .spotlight {
+    opacity: 1;
+  }
+
+  .chip {
+    @apply rounded-md border border-line bg-bg-tint px-2.5 py-1 font-mono text-xs text-ink-soft;
+  }
+
+  .section-label {
+    @apply font-mono text-xs font-semibold tracking-widest text-accent uppercase;
+  }
+  .section-label::before {
+    content: '// ';
+    opacity: 0.6;
+  }
+
+  /* hero terminal line + typing cursor */
+  .terminal-line {
+    @apply font-mono text-sm text-ink-soft;
+  }
+  .cursor-blink {
+    animation: cursor-blink 1s steps(2, start) infinite;
+  }
+
+  /* hero staged reveal on load: quick stagger, nothing waits on the typing */
+  .hero-avatar {
+    @apply flex-shrink-0 opacity-0 transition-[opacity,transform] duration-500;
+    transform: translateY(10px);
+  }
+  .hero.is-loaded .hero-avatar {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+  }
+  .hero-fade {
+    @apply opacity-0 transition-[opacity,transform] duration-500;
+    transform: translateY(10px);
+  }
+  .hero.is-loaded .hero-fade {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hero.is-loaded .hero-fade-1 { transition-delay: 0.05s; }
+  .hero.is-loaded .hero-fade-2 { transition-delay: 0.15s; }
+  .hero.is-loaded .hero-fade-3 { transition-delay: 0.25s; }
+
+  /* skip link for keyboard users: visually hidden until focused */
+  .skip-link {
+    @apply absolute left-4 top-4 z-50 -translate-y-24 rounded-md border border-accent bg-bg px-4 py-2 font-mono text-sm text-accent no-underline transition-transform;
+  }
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  .avatar-photo {
+    /* size is set per-breakpoint where it's used (Hero); the image has a
+       transparent (AI-removed) background, so only a soft bottom fade is
+       needed to keep the torso from ending in a hard line */
+    -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 98%);
+    mask-image: linear-gradient(to bottom, black 72%, transparent 98%);
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.45));
+  }
+
+  /* soft drifting gradient blobs behind the hero */
+  .aurora {
+    @apply pointer-events-none absolute z-0 rounded-full opacity-35;
+    filter: blur(60px);
+  }
+  .aurora-a {
+    @apply -top-36 -left-20 h-[340px] w-[340px] bg-accent;
+    animation: aurora-a 16s ease-in-out infinite;
+  }
+  .aurora-b {
+    @apply -top-16 -right-16 h-[260px] w-[260px] bg-ink-mute;
+    animation: aurora-b 20s ease-in-out infinite;
+  }
+
+  .project-card {
+    @apply relative z-0 rounded-xl border border-line bg-bg-tint px-5 py-6 transition-[background-color,transform,box-shadow,border-color] duration-200;
+  }
+  .project-card:hover {
+    @apply -translate-y-1 bg-bg-raised shadow-[0_12px_28px_rgba(0,0,0,0.35)];
+    border-color: var(--color-accent);
+  }
+
+  /* fake browser-chrome window framing project placeholder screenshots */
+  .browser-window {
+    @apply overflow-hidden rounded-lg border border-line bg-bg-raised;
+  }
+  .browser-chrome {
+    @apply flex items-center gap-3 border-b border-line px-3 py-2;
+  }
+  .browser-dot {
+    @apply h-2.5 w-2.5 rounded-full;
+  }
+  .browser-address {
+    @apply flex-1 truncate rounded bg-bg px-2 py-0.5 font-mono text-[0.7rem] text-ink-mute;
+  }
+
+}
+
+@keyframes cursor-blink {
+  to { visibility: hidden; }
+}
+@keyframes aurora-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6%, 8%) scale(1.15); }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-8%, 6%) scale(1.1); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}

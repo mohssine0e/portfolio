@@ -1,73 +1,18 @@
-# Portfolio Transformation Plan
+# Portfolio Project
 
-## Objective
-Transform the portfolio to be fully dynamic by loading all content from data.json, ensuring consistent styling, and improving readability and visual appeal.
-
-## Current State
-- Portfolio appears to be statically coded HTML/CSS/JS
-- Content is hardcoded in source files
-- Colors and positioning of myface image need improvement
-- Styling is inconsistent across sections
-
-## Target State
-- All content loaded dynamically from data.json
-- Consistent styling across all sections
-- Improved visual hierarchy and readability
-- Professional color scheme for the myface image
-- Easy maintenance - changes only require editing data.json
-
-## Implementation Plan
-1. Create structured data.json schema
-2. Refactor HTML/CSS/JS to load content from data.json
-3. Implement consistent styling system using CSS variables
-4. Optimize myface image positioning and styling
-5. Ensure responsive design across devices
-6. Test all sections with sample data
-7. Document the dynamic system
-
-## Data.json Schema
-Will define structure for:
-- Personal information
-- Skills (categories and items)
-- Projects (title, description, technologies, links)
-- Experience
-- Education
-- Contact information
-- Color palette
-- Image paths and styling properties
-
-## Styling System
-- CSS custom properties (variables) for colors, spacing, fonts
-- Component-based styling with consistent padding/margin
-- Unified button, card, and typography styles
-- Hover and focus states for interactivity
-
-## MyFace Image
-- Centered, circular or rounded corner design
-- Professional border and shadow
-- Responsive sizing
-- Optimized for light/dark mode
-
-## Testing
-- Verify all data loads correctly
-- Test with additions/removals in data.json
-- Check responsiveness on mobile/desktop
-- Validate color contrast for accessibility
-
-## Maintenance
-- Add comments to data.json for future editors
-- Document how to add new projects/skills
-- Create quick reference for styling variables
-
-## Dependencies
-- JSON parsing in JavaScript
-- DOM manipulation
-- CSS3 features (variables, flexbox, grid)
-
-## Success Criteria
-- Changes to data.json reflect immediately on site
-- All sections have consistent visual language
-- Professional appearance with balanced layout
-- Easy for non-developers to update content
-
-[[data-schema]] [[styling-system]] [[myface-design]]
+- personal developer portfolio(cybersecurity entotiaste), dark mode, terminal/code-editor aesthetic
+- React + Vite + TypeScript + Tailwind CSS. See LOOKHERE.md before assuming this is still a
+  zero-build static site — it isn't anymore.
+- All personal content (bio, skills, experience, projects, certifications, links) lives in
+  `public/data/data.json`, fetched at runtime — never hardcode it into components
+- Keep dependencies minimal, no heavy animation libraries unless justified (motion is done with
+  CSS + IntersectionObserver, not Framer Motion or similar)
+- Mobile-first, responsive
+- Accent color: terminal green `#00e5a0`
+- Each section borrows a distinct developer-tool visual metaphor (hero = shell prompt + frameless
+  cut-out portrait (edges CSS-masked into the bg — no box/border, owner's explicit choice), about =
+  man page, skills = package manager output, experience = git log, projects = repo cards,
+  contact = terminal form) — keep new sections in that spirit rather than reverting to plain cards
+- Icons are inline SVGs in `src/components/Icon.tsx`, fonts self-hosted via @fontsource — no
+  icon-font or font CDNs. Typing animations are decorative only: content must never be hidden
+  or gated behind them (`useTypewriter` + `useInView`)

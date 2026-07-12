@@ -3,7 +3,6 @@
     "name": "Mohssine Echlaihi",
     "title": "Software Engineering Student | Java Backend Developer",
     "email": "mohssineechlaihi85@gmail.com",
-    "phone": "+212 613 757 244",
     "location": "Fkih Ben Salah, Morocco",
     "description": "Fourth-year Computer Engineering student at ENSA Al Hoceima (ENSAH), focused on Java backend development and distributed systems. Hands-on experience designing Spring Boot microservices, REST APIs, and full-stack applications. Fast learner, strong problem-solver, and active open-source / Linux user. Seeking a PFA internship (2-3 months) to contribute to real-world backend or full-stack projects.",
     "headline": "Building scalable backend systems & distributed architectures"
@@ -12,11 +11,12 @@
     "github": "https://github.com/mohssine0e",
     "linkedin": "https://linkedin.com/in/mohssineechalaihi",
     "email": "mailto:mohssineechlaihi85@gmail.com",
-    "phone": "tel:+212613757244"
+    "cv_en": "/cv/mohssine-echlaihi-cv-en.pdf",
+    "cv_fr": "/cv/mohssine-echlaihi-cv-fr.pdf"
   },
   "technical_skills": {
     "programming": ["Java", "Python", "C", "C++"],
-    "backend": ["Java", "Spring Boot", "Spring Data JPA", "Spring Security", "Spring Cloud Gateway", "Hibernate", "RESTful APIs", "WebClient"],
+    "backend": ["Java", "Spring Boot", "Spring Data JPA", "Spring Security", "Spring Cloud Gateway", "Hibernate", "RESTful APIs", "WebClient", "PHP", "Laravel"],
     "frontend": ["React.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
     "databases": ["MySQL", "PostgreSQL", "MongoDB", "Oracle Database", "PL/SQL"],
     "devops_tools": ["Git", "GitHub", "GitLab CI/CD", "Docker", "Maven", "Linux (Arch)", "Swagger/OpenAPI"],
@@ -28,8 +28,7 @@
       "Data Structures & Algorithms",
       "REST API Design",
       "OWASP Security Basics"
-    ],
-    "other": ["PHP", "Laravel", "Blade Templating Engine"]
+    ]
   },
   "experience": [
     {
@@ -62,7 +61,8 @@
         "All endpoints documented with Swagger/OpenAPI"
       ],
       "github": "https://github.com/mohssine0e/student-enrollment-system",
-      "live_demo": null
+      "live_demo": null,
+      "image": null
     },
     {
       "id": 2,
@@ -78,7 +78,8 @@
         "Laravel's validation layer and form requests for data integrity across all CRUD operations"
       ],
       "github": "https://github.com/mohssine0e/university-management",
-      "live_demo": null
+      "live_demo": null,
+      "image": null
     }
   ],
   "education": [
@@ -86,7 +87,7 @@
       "id": 1,
       "degree": "Engineering Cycle, Computer Science",
       "institution": "ENSA Al Hoceima (ENSAH)",
-      "period": "2022 - Present",
+      "period": "2024 - Present",
       "coursework": ["Spring Boot", "Microservices", "Advanced JavaScript", "Application Security"]
     },
     {
@@ -108,16 +109,7 @@
       "id": 1,
       "name": "Oracle Cloud Infrastructure 2025 AI Foundations Associate",
       "issuer": "Oracle",
-      "type": "Oracle Certified Associate",
       "year": "2025"
-    },
-    {
-      "id": 2,
-      "name": "Java SE 17",
-      "issuer": "Oracle",
-      "type": "Oracle Certified Associate",
-      "year": "In Progress",
-      "status": "in-progress"
     }
   ],
   "leadership": {
@@ -126,9 +118,8 @@
         "title": "Chess Club President",
         "organization": "ENSA Al Hoceima",
         "responsibilities": [
-          "Organized tournaments",
-          "Coordinated activities",
-          "Led member engagement"
+          "Organized tournaments and coordinated club activities",
+          "Led member engagement and club growth"
         ]
       }
     ]
@@ -152,9 +143,5 @@
     "Distributed Systems",
     "Open Source",
     "Chess"
-  ],
-  "meta": {
-    "last_updated": "2026-06-28",
-    "version": "1.0"
-  }
+  ]
 }

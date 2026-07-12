@@ -1,15 +1,19 @@
+# dependencies & build output
+node_modules
+dist
+dist-ssr
+*.local
+*.tsbuildinfo
+
 # v0 sandbox internal files
 __v0_runtime_loader.js
 __v0_devtools.tsx
 __v0_jsx-dev-runtime.ts
-.snowflake/
-.v0-trash/
-.vercel/
 
-# Environment variables
-.env*.local
+# ignore all dotfiles/dotfolders except the ones the project needs
+.*
+!.gitignore
+!.oxlintrc.json
 
-# Common ignores
-node_modules
-.next/
-.DS_Store
+# personal notes, not part of the deployed site
+CONTENT-GUIDE.txt
