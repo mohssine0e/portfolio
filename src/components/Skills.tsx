@@ -18,7 +18,8 @@ function TreeList({ items }: { items: string[] }) {
 function SkillDir({ dir, items }: { dir: string; items: string[] }) {
   if (!items?.length) return null;
   return (
-    <div className="mb-5 break-inside-avoid rounded-lg border border-line bg-bg-raised p-4 sm:p-5">
+    <div className="spotlight-parent relative z-0 mb-5 break-inside-avoid overflow-hidden rounded-lg border border-line bg-bg-raised p-4 sm:p-5">
+      <span className="spotlight" />
       <p className="font-mono text-sm font-semibold text-accent">
         <Icon name="folder-open" className="mr-2 h-4 w-4 text-ink-mute" />
         {dir}/

@@ -30,7 +30,7 @@ export function Footer({ name, socials }: { name: string; socials: Socials }) {
           &copy; {new Date().getFullYear()} {name}. Built with React, Vite &amp; Tailwind.
         </p>
         <p className="mt-1.5 font-mono text-xs text-ink-mute">
-          <span className="text-accent">$</span> exit 0
+          <span className="text-accent">$</span> exit 0<span className="cursor-blink text-accent">█</span>
         </p>
       </Wrap>
     </footer>

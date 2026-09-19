@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ComponentType } from 'react';
+import { useEffect, useRef, useState, type ComponentType, type CSSProperties } from 'react';
 import type { Project } from '../types';
 import { Icon } from './Icon';
 import { TerminalSection } from './TerminalSection';
@@ -38,43 +38,28 @@ function repoLabel(project: Project): string {
   return project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
-/** on-theme GitHub button: actually copies `git clone <url>` to the clipboard */
-function GitCloneButton({ repoUrl }: { repoUrl: string }) {
-  const [copied, setCopied] = useState(false);
-  const resetTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  useEffect(() => () => clearTimeout(resetTimer.current), []);
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(`git clone ${repoUrl}.git`);
-      setCopied(true);
-      clearTimeout(resetTimer.current);
-      resetTimer.current = setTimeout(() => setCopied(false), 2000);
-    } catch {
-      window.open(repoUrl, '_blank', 'noopener,noreferrer');
-    }
-  }
-
-  return (
-    <button type="button" onClick={copy} className="btn btn-ghost" aria-live="polite">
-      {copied ? (
-        <>
-          <Icon name="check" className="h-4 w-4 text-accent" /> copied!
-        </>
-      ) : (
-        <>
-          <Icon name="copy" /> git clone
-        </>
-      )}
-    </button>
-  );
-}
-
 function ProjectCard({ project }: { project: Project }) {
   const Diagram = DIAGRAMS[project.name];
   const dotColor = primaryLangColor(project.technologies);
   const repo = repoLabel(project);
+
+  // `git clone` copies for real; the confirmation appears in the fake browser
+  // chrome like terminal output rather than swapping the button label
+  const [copied, setCopied] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(resetTimer.current), []);
+
+  async function copyClone() {
+    if (!project.github) return;
+    try {
+      await navigator.clipboard.writeText(`git clone ${project.github}.git`);
+      setCopied(true);
+      clearTimeout(resetTimer.current);
+      resetTimer.current = setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.open(project.github, '_blank', 'noopener,noreferrer');
+    }
+  }
 
   return (
     <div className="project-card spotlight-parent flex flex-col">
@@ -89,11 +74,19 @@ function ProjectCard({ project }: { project: Project }) {
       {/* preview slot: real screenshot when provided in data.json, else the
           architecture diagram, else an honest "coming soon" placeholder */}
       <div className="browser-window mb-5">
-        <div className="browser-chrome">
+        <div className="browser-chrome relative">
           <span className="browser-dot bg-[#ff5f57]" />
           <span className="browser-dot bg-[#febc2e]" />
           <span className="browser-dot bg-[#28c840]" />
           <span className="browser-address">localhost:8080/{repo.split('/').pop()}</span>
+          {copied && (
+            <span
+              role="status"
+              className="absolute inset-y-0 right-2 flex items-center gap-1 bg-bg-raised pl-2 font-mono text-[0.68rem] text-accent"
+            >
+              <Icon name="check" className="h-3 w-3" /> copied to clipboard
+            </span>
+          )}
         </div>
         {project.image ? (
           <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" className="block w-full" />
@@ -111,8 +104,8 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="mb-4 flex flex-wrap gap-1.5">
-        {project.technologies.map((t) => (
-          <span key={t} className="chip">
+        {project.technologies.map((t, i) => (
+          <span key={t} className="chip" style={{ '--i': i } as CSSProperties}>
             {t}
           </span>
         ))}
@@ -130,7 +123,9 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="mt-auto flex flex-wrap gap-3">
         {project.github && (
           <>
-            <GitCloneButton repoUrl={project.github} />
+            <button type="button" onClick={copyClone} className="btn btn-ghost">
+              <Icon name="copy" /> git clone
+            </button>
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
               <Icon name="github" /> View on GitHub
             </a>
@@ -148,7 +143,13 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function Projects({ projects }: { projects: Project[] }) {
   return (
-    <TerminalSection id="projects" label="04 — Projects" title="Selected work" command="ls ~/projects">
+    <TerminalSection
+      id="projects"
+      label="04 — Projects"
+      title="Selected work"
+      command="ls ~/projects"
+      exitLine={`${projects.length} repositories · done in 0.34s`}
+    >
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {projects.map((p) => (
           <ProjectCard key={p.id} project={p} />

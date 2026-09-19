@@ -15,6 +15,8 @@ export function TerminalSection({
   command,
   title,
   tint = false,
+  exitLine,
+  width,
   children,
 }: {
   id: string;
@@ -24,6 +26,10 @@ export function TerminalSection({
   /** human-readable section name for assistive tech */
   title: string;
   tint?: boolean;
+  /** optional build-tool style sign-off shown after the output, e.g. "done in 0.34s" */
+  exitLine?: string;
+  /** `prose` keeps running-text sections at a readable measure on wide screens */
+  width?: 'default' | 'prose';
   children: ReactNode;
 }) {
   // threshold 0 = type as soon as the section's first pixel (its heading)
@@ -34,7 +40,7 @@ export function TerminalSection({
 
   return (
     <section ref={ref} id={id} className={`section ${tint ? 'bg-bg-tint' : ''}`}>
-      <Wrap>
+      <Wrap width={width}>
         <div className="mb-10">
           <p className="section-label">{label}</p>
           <h2 aria-label={title} className="mt-2 min-h-[1.5em] font-mono text-[1.25rem] font-medium sm:text-2xl">
@@ -47,11 +53,16 @@ export function TerminalSection({
         </div>
         {/* the "output": revealed only once the command finishes typing */}
         <div
-          className={`transition-[opacity,transform] duration-500 ease-out ${
-            done ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+          className={`terminal-output transition-[opacity,transform] duration-500 ease-out ${
+            done ? 'is-done translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
           }`}
         >
           {children}
+          {exitLine && (
+            <p aria-hidden="true" className="mt-8 font-mono text-xs text-ink-mute">
+              <span className="text-accent">→</span> {exitLine}
+            </p>
+          )}
         </div>
       </Wrap>
     </section>

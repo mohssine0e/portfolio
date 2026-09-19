@@ -13,7 +13,7 @@ function ManSection({ title, children, last = false }: { title: string; children
 
 export function About({ personal }: { personal: Personal }) {
   return (
-    <TerminalSection id="about" label="01 — About" title="Profile" command="man mohssine">
+    <TerminalSection id="about" label="01 — About" title="Profile" command="man mohssine" width="prose">
         <div className="max-w-[760px] rounded-lg border border-line bg-bg-tint p-5 font-mono text-sm leading-relaxed sm:p-7">
           <ManSection title="NAME">
             <span className="text-ink">{personal.name}</span>

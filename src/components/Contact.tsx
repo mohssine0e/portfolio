@@ -80,7 +80,11 @@ export function Contact({ data }: { data: PortfolioData }) {
       </p>
 
       <div className="grid items-stretch gap-5 md:grid-cols-[1.15fr_1fr]">
-        <form onSubmit={handleSubmit} className="rounded-lg border border-line bg-bg-tint p-5 sm:p-6">
+        <form
+          onSubmit={handleSubmit}
+          className="spotlight-parent relative z-0 overflow-hidden rounded-lg border border-line bg-bg-tint p-5 sm:p-6"
+        >
+          <span className="spotlight" />
           <div className="space-y-4">
             <TerminalField label="name" name="name" type="text" placeholder="Ada Lovelace" required />
             <TerminalField label="email" name="email" type="email" placeholder="ada@example.com" required />
@@ -127,7 +131,8 @@ export function Contact({ data }: { data: PortfolioData }) {
           </p>
         </form>
 
-        <div className="flex flex-col rounded-lg border border-line bg-bg-tint p-5 sm:p-6">
+        <div className="spotlight-parent relative z-0 flex flex-col overflow-hidden rounded-lg border border-line bg-bg-tint p-5 sm:p-6">
+          <span className="spotlight" />
           <p className="mb-3 font-mono text-xs font-semibold tracking-widest text-ink-mute uppercase">
             <span className="text-accent"># </span>direct channels
           </p>

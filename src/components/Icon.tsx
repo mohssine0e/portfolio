@@ -1,7 +1,7 @@
 import type { JSX, SVGProps } from 'react';
 
 /* Inline stroke icons (Lucide outlines) so no icon-font CDN request is needed. */
-const PATHS: Record<string, JSX.Element> = {
+const PATHS = {
   mail: (
     <>
       <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -68,8 +68,9 @@ const PATHS: Record<string, JSX.Element> = {
     </>
   ),
   check: <path d="M20 6 9 17l-5-5" />,
-};
+} satisfies Record<string, JSX.Element>;
 
+/** literal union of the defined icons — a typo'd name is now a compile error */
 export type IconName = keyof typeof PATHS;
 
 export function Icon({ name, className = 'h-4 w-4', ...rest }: { name: IconName; className?: string } & SVGProps<SVGSVGElement>) {

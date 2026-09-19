@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import type { Education, Experience as ExperienceItem } from '../types';
 import { TerminalSection } from './TerminalSection';
 
@@ -42,8 +42,8 @@ function CommitEntry({
       <p className="mt-0.5 text-sm text-accent">{subtitle}</p>
       {tech && tech.length > 0 && (
         <div className="mt-2.5 flex flex-wrap gap-1.5">
-          {tech.map((t) => (
-            <span key={t} className="chip">
+          {tech.map((t, i) => (
+            <span key={t} className="chip" style={{ '--i': i } as CSSProperties}>
               {t}
             </span>
           ))}

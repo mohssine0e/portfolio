@@ -5,7 +5,8 @@ import { TerminalSection } from './TerminalSection';
 
 function Panel({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="rounded-lg border border-line bg-bg-raised p-5">
+    <div className="spotlight-parent relative z-0 overflow-hidden rounded-lg border border-line bg-bg-raised p-5">
+      <span className="spotlight" />
       <p className="mb-4 font-mono text-xs font-semibold tracking-widest text-ink-mute uppercase">
         <span className="text-accent"># </span>
         {title}

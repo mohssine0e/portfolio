@@ -15,5 +15,8 @@ __v0_jsx-dev-runtime.ts
 !.gitignore
 !.oxlintrc.json
 
+# AI working notes (separate from the reusable .ai kit) — local only
+ai/
+
 # personal notes, not part of the deployed site
 CONTENT-GUIDE.txt
