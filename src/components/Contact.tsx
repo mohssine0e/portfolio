@@ -114,7 +114,7 @@ export function Contact({ data }: { data: PortfolioData }) {
 
           {/* always-mounted live region so screen readers announce status changes */}
           <p role="status" aria-live="polite" className="mt-3 min-h-[1rem] font-mono text-xs">
-            {status === 'success' && <span className="text-accent">✓ message sent — exit code 0</span>}
+            {status === 'success' && <span className="text-accent">✓ Message sent. I&rsquo;ll get back to you soon.</span>}
             {status === 'error' && (
               <span className="text-amber-400">
                 ✗ message service unavailable — email me directly at{' '}

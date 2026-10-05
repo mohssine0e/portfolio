@@ -42,6 +42,8 @@ function ProjectCard({ project }: { project: Project }) {
   const Diagram = DIAGRAMS[project.name];
   const dotColor = primaryLangColor(project.technologies);
   const repo = repoLabel(project);
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
+  const visibleFeatures = showAllFeatures ? project.features : project.features.slice(0, 3);
 
   // `git clone` copies for real; the confirmation appears in the fake browser
   // chrome like terminal output rather than swapping the button label
@@ -112,13 +114,23 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <ul className="mb-5 space-y-1 font-mono text-[0.85rem] text-ink-soft">
-        {project.features.map((f, i) => (
+        {visibleFeatures.map((f, i) => (
           <li key={i} className="flex gap-2">
             <span className="text-accent">+</span>
             <span>{f}</span>
           </li>
         ))}
       </ul>
+      {project.features.length > 3 && (
+        <button
+          type="button"
+          aria-expanded={showAllFeatures}
+          onClick={() => setShowAllFeatures((expanded) => !expanded)}
+          className="mb-5 self-start font-mono text-xs text-accent underline-offset-4 hover:underline"
+        >
+          {showAllFeatures ? 'show less' : `show ${project.features.length - 3} more details`}
+        </button>
+      )}
 
       <div className="mt-auto flex flex-wrap gap-3">
         {project.github && (

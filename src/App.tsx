@@ -43,7 +43,7 @@ export default function App() {
         /* storage blocked: boot will just replay next load */
       }
       setBooting(false);
-    }, 1200);
+    }, 450);
     return () => clearTimeout(t);
   }, [booting]);
 
@@ -58,13 +58,13 @@ export default function App() {
             <p
               key={line}
               className="boot-line text-ink-mute"
-              style={{ animationDelay: `${0.2 + i * 0.25}s` }}
+              style={{ animationDelay: `${0.08 + i * 0.1}s` }}
             >
               <span className="text-accent">{line.slice(0, 6)}</span>
               {line.slice(6)}
             </p>
           ))}
-        <p className="boot-line" style={{ animationDelay: booting ? '1s' : '0s' }}>
+        <p className="boot-line" style={{ animationDelay: booting ? '0.35s' : '0s' }}>
           <span className="cursor-blink text-accent">█</span>
         </p>
       </Wrap>

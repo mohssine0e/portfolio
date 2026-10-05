@@ -13,7 +13,7 @@ export function Hero({ data }: { data: PortfolioData }) {
 
   // whoami types (~0.6s), then the output choreography: name prints, title +
   // headline fade, buttons pop one by one — total under 1.2s
-  const { typed, done } = useTypewriter('whoami', 70);
+  const { typed, done } = useTypewriter('whoami', 45);
 
   useEffect(() => setLoaded(true), []);
 
@@ -120,11 +120,11 @@ export function Hero({ data }: { data: PortfolioData }) {
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               ref={emailBtnRef}
-              href={data.socials.email}
+              href="#contact"
               className="btn btn-primary hero-pop"
               style={{ '--d': '0.1s' } as CSSProperties}
             >
-              <Icon name="mail" /> Email me
+              <Icon name="mail" /> Contact me
             </a>
             <a
               href={data.socials.github}
@@ -181,7 +181,7 @@ export function Hero({ data }: { data: PortfolioData }) {
           <TechTicker skills={data.technical_skills} />
         </div>
 
-        <div className="hero-avatar relative z-0 max-[560px]:order-[-1] max-[560px]:justify-self-center">
+        <div className="hero-avatar relative z-0 max-[560px]:justify-self-center">
           {/* backlight halo seats the cut-out portrait in the dark scene */}
           <div className="avatar-halo" aria-hidden="true" />
           <img
@@ -191,7 +191,7 @@ export function Hero({ data }: { data: PortfolioData }) {
             width={640}
             height={766}
             fetchPriority="high"
-            className="avatar-photo h-auto w-[350px] will-change-transform max-[700px]:w-[260px] max-[560px]:w-[220px] min-[1280px]:w-[400px] min-[1600px]:w-[440px]"
+            className="avatar-photo h-auto w-[350px] will-change-transform max-[700px]:w-[260px] max-[560px]:w-[180px] min-[1280px]:w-[400px] min-[1600px]:w-[440px]"
           />
         </div>
       </Wrap>

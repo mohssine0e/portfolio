@@ -24,7 +24,7 @@ export function Nav({ name }: { name: string }) {
   }, [activeId]);
 
   return (
-    <nav className="sticky top-0 z-20 border-b border-line bg-bg/85 backdrop-blur-md">
+    <nav aria-label="Primary navigation" className="sticky top-0 z-20 border-b border-line bg-bg/85 backdrop-blur-md">
       <div className="wrap flex h-14 items-center justify-between gap-6">
         <a
           href="#top"
@@ -62,7 +62,6 @@ export function Nav({ name }: { name: string }) {
               />
             )}
           </ul>
-
           {/* Below 640px five links overflow their row and clip "Contact", so the
               terminal takes over as the navigation there. From 1024px up there is
               room to also advertise the terminal, which is otherwise only
@@ -70,10 +69,11 @@ export function Nav({ name }: { name: string }) {
           <button
             type="button"
             onClick={() => openTerminal(window.innerWidth < 640 ? 'ls' : 'help')}
+            aria-label="Open navigation menu"
             className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-md border border-line bg-bg-tint px-2.5 py-1.5 font-mono text-xs text-ink-soft transition-colors hover:border-accent hover:text-accent sm:hidden lg:flex"
           >
             <span className="text-accent">{'>_'}</span>
-            <span className="lg:hidden">menu</span>
+            <span className="lg:hidden">Menu</span>
             <span className="hidden lg:inline">help</span>
           </button>
         </div>
