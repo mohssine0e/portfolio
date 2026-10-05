@@ -3,12 +3,12 @@ import type { PortfolioData } from '../types';
 import { Icon, type IconName } from './Icon';
 import { TerminalSection } from './TerminalSection';
 
-// Set a real Formspree endpoint to use server-side submissions.
-// Until then the form opens the visitor's email client with a pre-filled draft.
-const FORMSPREE_ENDPOINT = '';
+// VITE_FORMSPREE_ENDPOINT can override this endpoint in Vercel if needed.
+const FORMSPREE_ENDPOINT =
+  import.meta.env.VITE_FORMSPREE_ENDPOINT ?? 'https://formspree.io/f/xbgdjejg';
 const FORMSPREE_CONFIGURED = Boolean(FORMSPREE_ENDPOINT);
 
-type Status = 'idle' | 'sending' | 'success' | 'error' | 'mailto';
+type Status = 'idle' | 'sending' | 'success' | 'error';
 
 const FIELD_CLASSES =
   'mt-1.5 w-full rounded-md border border-line bg-bg-raised px-3 py-2.5 font-mono text-sm text-ink placeholder:text-ink-mute outline-none transition-[border-color,box-shadow] focus:border-accent focus:shadow-[0_0_0_3px_var(--color-accent-soft)]';
@@ -42,17 +42,15 @@ export function Contact({ data }: { data: PortfolioData }) {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const fields = new FormData(form);
 
-    // no form backend configured: open the visitor's mail client pre-filled
-    // instead of dead-ending them with an error
+    if (!form.reportValidity()) return;
+
     if (!FORMSPREE_CONFIGURED) {
-      const subject = `Portfolio contact from ${String(fields.get('name'))}`;
-      const body = `${String(fields.get('message'))}\n\n— ${String(fields.get('name'))} <${String(fields.get('email'))}>`;
-      window.location.href = `${data.socials.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      setStatus('mailto');
+      setStatus('error');
       return;
     }
+
+    const fields = new FormData(form);
 
     setStatus('sending');
     try {
@@ -86,15 +84,15 @@ export function Contact({ data }: { data: PortfolioData }) {
         >
           <span className="spotlight" />
           <div className="space-y-4">
-            <TerminalField label="name" name="name" type="text" placeholder="Ada Lovelace" required />
-            <TerminalField label="email" name="email" type="email" placeholder="ada@example.com" required />
+            <TerminalField label="name" name="name" type="text" placeholder="Your name" required />
+            <TerminalField label="email" name="email" type="email" placeholder="you@example.com" required />
             <label className="block">
               <span className="font-mono text-sm text-accent">&gt; message:</span>
               <textarea
                 name="message"
                 rows={4}
                 required
-                placeholder="Let's build something..."
+                placeholder="Tell me about your project..."
                 className={`resize-y ${FIELD_CLASSES}`}
               />
             </label>
@@ -110,19 +108,16 @@ export function Contact({ data }: { data: PortfolioData }) {
                 running<span className="cursor-blink">_</span>
               </>
             ) : (
-              <>$ ./send_message.sh --to={data.personal.name.split(' ')[0].toLowerCase()}</>
+              <>Send message</>
             )}
           </button>
 
           {/* always-mounted live region so screen readers announce status changes */}
           <p role="status" aria-live="polite" className="mt-3 min-h-[1rem] font-mono text-xs">
             {status === 'success' && <span className="text-accent">✓ message sent — exit code 0</span>}
-            {status === 'mailto' && (
-              <span className="text-ink-soft">✓ opening your email client — send the draft to finish</span>
-            )}
             {status === 'error' && (
               <span className="text-amber-400">
-                ✗ sending failed — email me directly at{' '}
+                ✗ message service unavailable — email me directly at{' '}
                 <a href={data.socials.email} className="text-accent hover:underline">
                   {data.personal.email}
                 </a>
