@@ -11,9 +11,9 @@ export interface Socials {
   github: string;
   linkedin: string;
   email: string;
-  /** paths to the CV PDFs under public/, e.g. "/cv/mohssine-echlaihi-cv-en.pdf" */
-  cv_en?: string;
-  cv_fr?: string;
+  /** paths to the CV PDFs under public/; null while the files are unavailable */
+  cv_en?: string | null;
+  cv_fr?: string | null;
 }
 
 export interface TechnicalSkills {

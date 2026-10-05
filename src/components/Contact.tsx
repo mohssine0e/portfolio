@@ -3,10 +3,10 @@ import type { PortfolioData } from '../types';
 import { Icon, type IconName } from './Icon';
 import { TerminalSection } from './TerminalSection';
 
-// Sign up at formspree.io, create a form, and paste its endpoint here to go live.
-// Until then the form falls back to opening the visitor's email client pre-filled.
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-const FORMSPREE_CONFIGURED = !FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID');
+// Set a real Formspree endpoint to use server-side submissions.
+// Until then the form opens the visitor's email client with a pre-filled draft.
+const FORMSPREE_ENDPOINT = '';
+const FORMSPREE_CONFIGURED = Boolean(FORMSPREE_ENDPOINT);
 
 type Status = 'idle' | 'sending' | 'success' | 'error' | 'mailto';
 
