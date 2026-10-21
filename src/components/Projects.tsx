@@ -4,8 +4,11 @@ import { Icon } from './Icon';
 import { TerminalSection } from './TerminalSection';
 import { MicroservicesDiagram } from './diagrams/MicroservicesDiagram';
 import { RolesDiagram } from './diagrams/RolesDiagram';
+import { PaaSArchitectureDiagram } from './diagrams/PaaSArchitectureDiagram';
 
 const DIAGRAMS: Record<string, ComponentType> = {
+  'MicroPaaS — Self-Hosted PaaS & Container Engine': PaaSArchitectureDiagram,
+  'Distributed Student Enrollment Platform': MicroservicesDiagram,
   'Student Enrollment System - Microservices Architecture': MicroservicesDiagram,
   'University Academic Management Platform': RolesDiagram,
 };

@@ -165,7 +165,7 @@ export function Contact({ data }: { data: PortfolioData }) {
 
           <p className="mt-auto pt-6 font-mono text-xs text-ink-mute">
             <Icon name="map-pin" className="mr-1.5 h-3.5 w-3.5 text-accent" />
-            {data.personal.location} · open to PFA internships
+            {data.personal.location} · open to PFE internships (5–6 months)
           </p>
         </div>
       </div>

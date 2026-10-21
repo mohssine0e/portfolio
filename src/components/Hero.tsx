@@ -175,7 +175,7 @@ export function Hero({ data }: { data: PortfolioData }) {
             )}
             <p className="hero-pop flex items-center gap-2 font-mono text-xs text-ink-soft" style={{ '--d': '0.42s' } as CSSProperties}>
               <span className="pulse-dot h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-              open to PFA internships · {data.personal.location}
+              open to PFE internships (5–6 months) · {data.personal.location}
             </p>
           </div>
           <TechTicker skills={data.technical_skills} />

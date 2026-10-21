@@ -38,7 +38,7 @@ export function About({ personal }: { personal: Personal }) {
               <dt className="text-ink-mute">--stack</dt>
               <dd className="m-0 text-ink">Java, Spring Boot</dd>
               <dt className="text-ink-mute">--seeking</dt>
-              <dd className="m-0 text-ink">PFA internship (2&ndash;3 months)</dd>
+              <dd className="m-0 text-ink">PFE internship (5&ndash;6 months)</dd>
             </dl>
           </ManSection>
 

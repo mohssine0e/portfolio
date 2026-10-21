@@ -1,83 +1,145 @@
 {
   "personal": {
     "name": "Mohssine Echlaihi",
-    "title": "Java Backend Developer · Software Engineering Student",
+    "title": "Software Engineering Student | Java & Spring Boot Backend Engineer",
     "email": "mohssineechlaihi85@gmail.com",
+    "phone": "+212 613 757 244",
     "location": "Fkih Ben Salah, Morocco",
-    "description": "Fourth-year Computer Engineering student at ENSA Al Hoceima (ENSAH), focused on Java backend development and distributed systems. Hands-on experience designing Spring Boot microservices, REST APIs, and full-stack applications. Fast learner, strong problem-solver, and active open-source / Linux user. Seeking a PFA internship (2-3 months) to contribute to real-world backend or full-stack projects.",
-    "headline": "Building scalable backend systems & distributed architectures"
+    "description": "Final-year Software Engineering student at ENSA Al Hoceima (ENSAH), focused on Java backend development and distributed systems. Hands-on experience designing Spring Boot microservices, REST APIs, and full-stack applications. Fast learner, strong problem-solver, and active open-source / Linux user. Seeking a PFE internship (5-6 months) to contribute to real-world backend/software engineering projects.",
+    "headline": "Building resilient backend microservices, distributed systems & cloud-native architectures"
   },
   "socials": {
     "github": "https://github.com/mohssine0e",
-    "linkedin": "https://linkedin.com/in/mohssineechalaihi",
+    "linkedin": "https://linkedin.com/in/mohssineechlaihi",
     "email": "mailto:mohssineechlaihi85@gmail.com",
     "cv_en": "/cv/cv_en_mohssine_echlaihi.pdf",
     "cv_fr": "/cv/cv_fr_mohssine_echlaihi.pdf"
   },
   "technical_skills": {
-    "programming": ["Java", "Python", "C", "C++"],
-    "backend": ["Java", "Spring Boot", "Spring Data JPA", "Spring Security", "Spring Cloud Gateway", "Hibernate", "RESTful APIs", "WebClient", "PHP", "Laravel"],
-    "frontend": ["React.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
-    "databases": ["MySQL", "PostgreSQL", "MongoDB", "Oracle Database", "PL/SQL"],
-    "devops_tools": ["Git", "GitHub", "GitLab CI/CD", "Docker", "Maven", "Linux (Arch)", "Swagger/OpenAPI"],
+    "programming": [
+      "Java (21, Virtual Threads)",
+      "TypeScript",
+      "JavaScript",
+      "SQL",
+      "Python",
+      "Bash"
+    ],
+    "backend": [
+      "Java",
+      "Spring Boot 3",
+      "Spring Security",
+      "Spring Data JPA",
+      "Spring Cloud Gateway",
+      "WebClient",
+      "RabbitMQ",
+      "REST APIs",
+      "SSE / WebSocket"
+    ],
+    "frontend": [
+      "React 19",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Chakra UI",
+      "Bootstrap"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "MySQL",
+      "Database-per-service Pattern"
+    ],
+    "devops_tools": [
+      "Docker",
+      "Docker Engine API",
+      "Terraform",
+      "Testcontainers",
+      "GitHub Actions",
+      "GitLab CI",
+      "Linux",
+      "Git"
+    ],
     "concepts": [
-      "Object-Oriented Programming (OOP)",
-      "MVC Architecture",
-      "Microservices Architecture",
       "Distributed Systems",
-      "Data Structures & Algorithms",
+      "Microservices Architecture",
+      "Event-Driven Architecture",
       "REST API Design",
-      "OWASP Security Basics"
+      "Relational Database Modeling",
+      "Unit & Integration Testing (JUnit, Mockito, Vitest, MSW)",
+      "CI/CD Automation"
     ]
   },
   "experience": [
     {
       "id": 1,
       "company": "ShiftBricks",
-      "position": "Web Development Intern",
-      "duration": "2024 (2 months)",
+      "position": "Full-Stack Java / React Intern (PFA)",
+      "duration": "Jul 2026 – Aug 2026 (2 months)",
       "location": "Morocco",
-      "technologies": ["Laravel", "PostgreSQL", "Docker", "GitLab"],
+      "technologies": ["Java 21", "Spring Boot 3", "React 19", "TypeScript", "Azure Service Bus", "PostgreSQL", "Docker", "Vitest", "Chakra UI"],
       "responsibilities": [
-        "Designed and built a complete license management platform end-to-end: requirements analysis, system design, implementation, and deployment",
-        "Developed backend with Laravel (MVC), implemented authentication and core business logic",
-        "Built frontend with Blade, HTML, and CSS",
-        "Designed and optimized the PostgreSQL schema",
-        "Containerized the app with Docker and managed releases via GitLab"
+        "Extended an intelligent accounting pipeline by integrating end-to-end bank statement processing (asynchronous ingestion, matching, and reconciliation)",
+        "Developed a bank reconciliation engine in Spring Boot 3 featuring automated invoice-transaction matching, balance verification, and accounting plan mapping",
+        "Created a dual-panel workspace UI in React 19 / TypeScript / Chakra UI with integrated PDF previewing and inline transaction editing",
+        "Executed unit and integration tests (JUnit, Mockito, Vitest, MSW) and generated client APIs via OpenAPI specifications"
+      ]
+    },
+    {
+      "id": 2,
+      "company": "ShiftBricks",
+      "position": "Web Development Intern",
+      "duration": "Jul 2025 – Aug 2025 (2 months)",
+      "location": "Morocco",
+      "technologies": ["Laravel", "PostgreSQL", "Docker", "Docker Compose", "GitLab CI/CD", "REST APIs"],
+      "responsibilities": [
+        "Designed, developed, and deployed an end-to-end full-stack license management platform from requirements analysis to production release",
+        "Implemented role-based access control (RBAC), multi-tenant authentication, and core business logic using Laravel MVC and REST APIs",
+        "Modeled a normalized PostgreSQL schema and containerized the application stack using Docker and Docker Compose for reproducible deployments"
       ]
     }
   ],
   "projects": [
     {
       "id": 1,
-      "name": "Student Enrollment System - Microservices Architecture",
-      "description": "A distributed system for managing students, courses, and enrollments using microservices architecture",
-      "technologies": ["Spring Boot", "Spring Cloud Gateway", "React", "Docker", "WebClient", "MySQL", "Swagger/OpenAPI"],
+      "name": "MicroPaaS — Self-Hosted PaaS & Container Engine",
+      "description": "A self-hosted PaaS transforming Git repositories into isolated, health-checked containerized applications with real-time log streaming [In Progress].",
+      "technologies": ["Java 21", "Spring Boot 3", "Docker API", "RabbitMQ", "Terraform", "Server-Sent Events (SSE)", "Testcontainers", "GitHub Actions"],
       "features": [
-        "Independent Spring Boot services (Student, Course, Enrollment) communicating via WebClient behind an API Gateway",
-        "Database-per-service design (MySQL) for loose coupling and scalability",
-        "React dashboard for enrollment workflows",
-        "Business rules implementation including capacity limits and cancellation policies",
-        "All endpoints documented with Swagger/OpenAPI"
+        "Architected a self-hosted PaaS transforming Git repositories into isolated, health-checked containerized applications",
+        "Implemented an event-driven build pipeline using RabbitMQ and Java 21 Virtual Threads, achieving sub-5ms HTTP responses under high concurrency",
+        "Engineered an incremental Git caching engine and real-time log streaming over Server-Sent Events (SSE) with an in-memory replay buffer",
+        "Built a CI/CD pipeline using GitHub Actions and Testcontainers for automated testing against ephemeral PostgreSQL and RabbitMQ instances"
       ],
-      "github": "https://github.com/mohssine0e/student-enrollment-system",
+      "github": "https://github.com/mohssine0e/micropaas",
       "live_demo": null,
       "image": null
     },
     {
       "id": 2,
-      "name": "University Academic Management Platform",
-      "description": "Multi-role academic platform with granular role-based access control",
-      "technologies": ["Laravel", "MySQL", "Bootstrap", "Eloquent ORM"],
+      "name": "Distributed Student Enrollment Platform",
+      "description": "A distributed microservices platform decoupling Student, Course, and Enrollment domains behind a Spring Cloud API Gateway.",
+      "technologies": ["Java 21", "Spring Boot", "Spring Cloud Gateway", "React", "Docker", "MySQL", "WebClient"],
       "features": [
-        "Multi-role system (admin, professor, coordinator, department head) with granular role-based access control",
-        "Custom Laravel middleware for route protection and role/permission verification",
-        "Normalized relational schema (MySQL) with Eloquent ORM relationships (one-to-many, many-to-many)",
-        "Core modules for courses, scheduling, and grade management",
-        "Responsive Blade/Bootstrap UI",
-        "Laravel's validation layer and form requests for data integrity across all CRUD operations"
+        "Engineered a distributed microservices platform decoupling Student, Course, and Enrollment domains behind a Spring Cloud API Gateway",
+        "Applied database-per-service pattern using isolated MySQL instances; implemented reactive WebClient for non-blocking inter-service communications",
+        "Enforced domain business rules including course capacity constraints and 24-hour cancellation windows",
+        "Containerized all microservices and database instances with Docker Compose for local orchestration"
       ],
-      "github": "https://github.com/mohssine0e/university-management",
+      "github": "https://github.com/mohssine0e/student-enrollment-microservices",
+      "live_demo": null,
+      "image": null
+    },
+    {
+      "id": 3,
+      "name": "University Academic Management Platform",
+      "description": "A multi-role academic governance system with granular role-based access control and normalized relational data model.",
+      "technologies": ["Laravel", "MySQL", "Bootstrap", "PHP", "Eloquent ORM"],
+      "features": [
+        "Built a multi-role academic governance system (admin, professor, department head) with granular role-based access control and custom middleware",
+        "Designed a normalized relational database with Eloquent ORM mappings and custom form request validation",
+        "Developed responsive UI modules for course management, academic scheduling, and faculty evaluation"
+      ],
+      "github": "https://github.com/mohssine0e/academic-management-platform",
       "live_demo": null,
       "image": null
     }
@@ -85,22 +147,23 @@
   "education": [
     {
       "id": 1,
-      "degree": "Engineering Cycle, Computer Science",
-      "institution": "ENSA Al Hoceima (ENSAH)",
-      "period": "2024 - Present",
-      "coursework": ["Spring Boot", "Microservices", "Advanced JavaScript", "Application Security"]
+      "degree": "State Engineering Degree in Software Engineering",
+      "institution": "National School of Applied Sciences (ENSAH), Al Hoceima",
+      "period": "2024 – 2027 (In Progress)",
+      "coursework": ["Distributed Systems", "Spring Boot & Cloud", "Software Architecture", "DevOps & Containers"]
     },
     {
       "id": 2,
-      "degree": "Preparatory Cycle for Engineering Studies",
-      "institution": "ENSA Al Hoceima (ENSAH)",
-      "period": "2022 - 2024"
+      "degree": "Preparatory Classes for Engineering Cycle",
+      "institution": "National School of Applied Sciences (ENSAH), Al Hoceima",
+      "period": "2022 – 2024",
+      "coursework": ["Advanced Mathematics", "Physics & Electromagnetism", "Algorithms & C Programming"]
     },
     {
       "id": 3,
       "degree": "Baccalaureate in Physics",
       "institution": "Lycée Bir Anzaran, Fkih Ben Salah",
-      "period": "2021 - 2022",
+      "period": "2021 – 2022",
       "honors": "Mention Très Bien"
     }
   ],
@@ -116,10 +179,10 @@
     "roles": [
       {
         "title": "Chess Club President",
-        "organization": "ENSA Al Hoceima",
+        "organization": "Chess Club ENSA Al Hoceima",
         "responsibilities": [
-          "Organized tournaments and coordinated club activities",
-          "Led member engagement and club growth"
+          "President coordinating university-wide tournaments and technical workshops",
+          "Promoted tactical thinking, competitive chess events, and student engagement"
         ]
       }
     ]
@@ -131,17 +194,18 @@
     },
     {
       "language": "French",
-      "proficiency": "B2"
+      "proficiency": "Full Professional / C1"
     },
     {
       "language": "English",
-      "proficiency": "B2"
+      "proficiency": "Full Professional / C1"
     }
   ],
   "interests": [
-    "Backend Engineering",
-    "Distributed Systems",
-    "Open Source",
+    "Open Source / Linux",
+    "Platform Engineering",
+    "DevOps",
+    "Systems Architecture",
     "Chess"
   ]
 }
